@@ -1,0 +1,32 @@
+sed -n "/bin/p" /etc/passwd | head 
+sed -n "/root/p" /etc/passwd | head 
+sed -n "/root/p" /etc/passwd
+sed -n "/adminuser/p" /etc/passwd
+sed -n "/badal/p" /etc/passwd
+sed -n "/root/p" /etc/passwd
+sed -n "/sysytem/p" /etc/passwd
+sed -n "/system/p" /etc/passwd
+
+multiple commands at a time use -e
+-n is use to suppress p cause by default sed print and again we use p it print content of file twice so to
+suppress it use -n
+
+[adminuser@centos sedd]$ sed -n -e "/system/p" -e /badal/p /etc/passwd
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+badal:x:1001:1001::/home/badal:/bin/bash
+flatpak:x:973:973:User for flatpak system helper:/:/sbin/nologin
+[adminuser@centos sedd]$ sed -n -e "/root/p" -e /badal/p /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+operator:x:11:0:operator:/root:/sbin/nologin
+badal:x:1001:1001::/home/badal:/bin/bash
+
+[adminuser@centos sedd]$ var3="root"
+[adminuser@centos sedd]$ var1="badal"
+
+[adminuser@centos sedd]$ sed -n "/$var1/p" /etc/passwd
+badal:x:1001:1001::/home/badal:/bin/bash
+
+[adminuser@centos sedd]$ sed -n "/$var3/p" /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+operator:x:11:0:operator:/root:/sbin/nologin
