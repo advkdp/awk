@@ -1,0 +1,42 @@
+Insert Line Before Line No.1
+[adminuser@centos awk]$ cat emploee.txt 
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+
+[adminuser@centos awk]$ sed '1i S_NO Name Salary' emploee.txt
+S_NO Name Salary
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+
+[adminuser@centos awk]$ To permanent Change file use -i
+
+[adminuser@centos awk]$ cat emploee.txt 
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+
+
+[adminuser@centos awk]$ sed -i '1i S_NO Name Salary' emploee.txt
+
+[adminuser@centos awk]$ cat emploee.txt 
+S_NO Name Salary
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+
+[adminuser@centos awk]$ Insert line after line no 1 ie now S_No Name Salary
+
+[adminuser@centos awk]$ sed -i '1a --------------------' emploee.txt
+[adminuser@centos awk]$ cat emploee.txt 
+S_NO Name Salary
+--------------------
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
