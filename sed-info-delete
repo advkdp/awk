@@ -1,0 +1,52 @@
+[adminuser@centos sedd]$ taking backup before delete permanently file content
+bash: taking: command not found...
+[adminuser@centos sedd]$ sed -i.back '3,$d' testfile.txt 
+[adminuser@centos sedd]$ cat testfile.txt
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Videos
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Templates
+[adminuser@centos sedd]$ ll
+total 8
+-rw-rw-r-- 1 adminuser adminuser  117 Oct  3 17:12 testfile.txt
+-rw-rw-r-- 1 adminuser adminuser 2519 Oct  3 17:11 testfile.txt.back
+[adminuser@centos sedd]$ cat testfile.txt.back 
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Videos
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Templates
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Public
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Pictures
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Music
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Downloads
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Documents
+drwxr-xr-x 2 adminuser adminuser   6 Sep 28 05:52 Desktop
+-rw-rw-r-- 1 adminuser adminuser   0 Sep 28 06:45 cbd
+-rw-rw-r-- 1 adminuser adminuser   0 Sep 28 06:45 abc
+drwxrwxr-x 2 adminuser adminuser   6 Sep 29 12:28 shellscripts
+-rw-rw-r-- 1 adminuser adminuser 335 Sep 29 12:37 test.txt
+-rw-rw-r-- 1 adminuser adminuser 170 Sep 29 15:42 myservers_info
+-rwxrwxr-x 1 adminuser adminuser 107 Sep 30 08:25 1.sh
+-rw-rw-r-- 1 adminuser adminuser   0 Sep 30 09:47 tomcat-install.sh
+-rw-rw-r-- 1 adminuser adminuser 191 Oct  1 08:12 backup.sh
+-rw-rw-r-- 1 adminuser adminuser  16 Oct  1 13:42 forloop.sh
+drwxrwxr-x 2 adminuser adminuser 190 Oct  1 18:13 tomcat
+drwxrwxr-x 2 adminuser adminuser 120 Oct  2 05:07 narendraR
+-rw-rw-r-- 1 adminuser adminuser  45 Oct  2 09:13 ec2-info.txt
+-rw-rw-r-- 1 adminuser adminuser   7 Oct  2 09:56 pas.txt
+-rw-rw-r-- 1 adminuser adminuser   7 Oct  2 10:18 pasd
+-rw-rw-r-- 1 adminuser adminuser 292 Oct  2 10:27 multiservers.sh
+-rw-rw-r-- 1 adminuser adminuser 667 Oct  2 11:00 multiserverfor.sh
+-rw-rw-r-- 1 adminuser adminuser  28 Oct  2 12:59 remote-servers.txt
+-rw-rw-r-- 1 adminuser adminuser  22 Oct  2 13:15 commands.txt
+-rw-rw-r-- 1 adminuser adminuser  62 Oct  2 13:48 remoteservers.txt
+-rw-rw-r-- 1 adminuser adminuser 453 Oct  2 13:48 passwdless_manyservers.sh
+-rw-rw-r-- 1 adminuser adminuser  90 Oct  2 14:14 diffusers.sh
+-rw-rw-r-- 1 adminuser adminuser  94 Oct  2 14:15 Adiffusers.sh
+-rw-rw-r-- 1 adminuser adminuser 157 Oct  2 14:24 Bdiffusers.sh
+-rw-rw-r-- 1 adminuser adminuser 160 Oct  2 14:29 Cdiffusers.sh
+-rw-rw-r-- 1 adminuser adminuser 229 Oct  2 14:34 Ddiffusers.sh
+-rw-rw-r-- 1 adminuser adminuser  99 Oct  2 14:36 serversinfo.txt
+-rw-rw-r-- 1 adminuser adminuser 128 Oct  2 14:44 serversinfo1.txt
+-rw-rw-r-- 1 adminuser adminuser 402 Oct  2 14:45 Ediffusers.sh
+-rw-rw-r-- 1 adminuser adminuser 133 Oct  2 15:50 whilelslrt.sh
+drwxrwxr-x 2 adminuser adminuser 142 Oct  2 16:14 whileloop
+drwxrwxr-x 2 adminuser adminuser  21 Oct  2 16:55 Functionss
+drwxrwxr-x 2 adminuser adminuser  91 Oct  3 15:58 awk
+drwxrwxr-x 2 adminuser adminuser   6 Oct  3 16:52 sedd
