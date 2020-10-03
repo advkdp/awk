@@ -1,0 +1,64 @@
+cat emploee.txt 
+S_NO Name Salary
+--------------------
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+[adminuser@centos awk]$ insert after last line
+
+
+[adminuser@centos awk]$ sed -i '$a ---------------' emploee.txt 
+[adminuser@centos awk]$ cat emploee.txt 
+S_NO Name Salary
+--------------------
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+---------------
+
+
+Insert a line before searching word^C
+[adminuser@centos awk]$ sed '/Narendra/i 0 Mounika  46000' emploee.txt 
+S_NO Name Salary
+--------------------
+0 Mounika  46000
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+---------------
+
+
+Insert After a Line search by word^C
+[adminuser@centos awk]$ sed '/Clinton/a 5 Anil 56000' emploee.txt 
+S_NO Name Salary
+--------------------
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+5 Anil 56000
+---------------
+
+delete a line eg 3rd line
+
+sed '3d' emploee.txt 
+S_NO Name Salary
+--------------------
+2 Raju     75000
+3 John     92000
+4 Clinton  85000
+---------------
+
+
+delete line serach by word
+
+sed '/Clinton/d' emploee.txt 
+S_NO Name Salary
+--------------------
+1 Narendra 90000
+2 Raju     75000
+3 John     92000
+---------------
