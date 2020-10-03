@@ -1,0 +1,23 @@
+[adminuser@centos awk]$ cat readcli.awk 
+
+#!/usr/bin/awk -f
+BEGIN {
+	print "Reading values a & b from file ab.txt "
+}
+
+{
+a=$1
+b=$2
+print "a="a, "b="b
+}
+
+END {
+	print "Reading Done"
+}
+
+=========================================================
+[adminuser@centos awk]$ ./readcli.awk ab.txt
+Reading values a & b from file ab.txt 
+a=2 b=6
+a=5 b=6
+Reading Done
