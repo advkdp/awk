@@ -1,0 +1,88 @@
+cat testf.txt 
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+polkitd:x:998:996:User for polkitd:/:/sbin/nologin
+
+
+
+replacing first occuerence on each line by another word here systemd by badald
+
+[adminuser@centos awk]$ sed 's/systemd/badald/' testf.txt 
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+badald-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+badald-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+polkitd:x:998:996:User for polkitd:/:/sbin/nologin
+
+
+replace word on all occurence by other word
+
+here systemd replace by advikad
+
+[adminuser@centos awk]$ sed 's/systemd/advikad/g' testf.txt 
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+advikad-coredump:x:999:997:advikad Core Dumper:/:/sbin/nologin
+advikad-resolve:x:193:193:advikad Resolver:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+polkitd:x:998:996:User for polkitd:/:/sbin/nologin
+
+Replace only 2nd occurence of word on each line
+
+sed 's/systemd/pawank/2' testf.txt 
+systemd-coredump:x:999:997:pawank Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:pawank Resolver:/:/sbin/nologin
+systemd-coredump:x:999:997:pawank Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:pawank Resolver:/:/sbin/nologin
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+systemd-coredump:x:999:997:pawank Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:pawank Resolver:/:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-coredump:x:999:997:pawank Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:pawank Resolver:/:/sbin/nologin
+
+find word on line and replace other word on that line
+here we search by word nobody if found then replace word kernal with centosbadal replace 
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+
+sed '/nobody/s/Kernel/centosbadal/g' testf.txt 
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+systemd-coredump:x:999:997:systemd Core Dumper:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+nobody:x:65534:65534:centosbadal Overflow User:/:/sbin/nologin
