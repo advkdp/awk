@@ -1,0 +1,215 @@
+sed-Regex
+
+An expression that using a pattern(using more than one word) is called as regex(regular expression)
+
+[adminuser@centos awk]$ cat ex.txt 
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf
+Thiss
+Thisss
+Thisss
+Thissss
+This is a line
+This is a one more line
+. * \+ \?
+asdfasdfasdfasdf
+This	is	tab	line
+
+\s matches for space To find lines having spaces(tab spaces also)
+
+[adminuser@centos awk]$ sed -n '/\s/p' ex.txt
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+This is a line
+This is a one more line
+. * \+ \?
+This	is	tab	line
+
+========================================
+
+to remove its purpose and find only lines contain \s use \ escape character
+
+[adminuser@centos awk]$ sed -n '/\\s/p' ex.txt
+
+This \s is a pytasdf
+
+===========================================
+
+\t tab space only find lines having tab space
+
+[adminuser@centos awk]$ sed -n '/\t/p' ex.txt
+This	is	tab	line
+
+============================================
+
+. matches any character not include new line
+it can be use to search between words eg
+
+p.t --- p somewords s
+
+sed -n '/p.t/p' ex.txt
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+Thisisapotasdf
+
+search word with space
+
+sed -n '/\sp.t/p' ex.txt
+
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+
+=================================================
+
+word with space at start and at end
+
+sed '/\sp.t\s/p' ex.txt
+This is a put asdf
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf
+Thiss
+Thisss
+Thisss
+Thissss
+This is a line
+This is a one more line
+. * \+ \?
+asdfasdfasdfasdf
+This	is	tab	line
+
+============================================
+
+if we search to find . it will print all lines cause . means any character
+
+sed -n '/./p' ex.txt 
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf
+Thiss
+Thisss
+Thisss
+Thissss
+This is a line
+This is a one more line
+. * \+ \?
+asdfasdfasdfasdf
+This	is	tab	line
+
+==================================================
+so only to print lines with . remove its purpose by /
+
+sed -n '/\./p' ex.txt
+. * \+ \?
+
+==============================================
+
+
+
+here we searching lines conatain This so it display such lines but will not display Thi like word so
+
+sed -n '/This/p' ex.txt
+
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf
+Thiss
+Thisss
+Thisss
+Thissss
+This is a line
+This is a one more line
+This	is	tab	line
+
+* matches a zero or more characters This* = Thi+(0)s or Th+more(s)
+
+but here s is zero time or more so Thi like word will display
+
+sed -n '/This*/p' ex.txt
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf
+Thi
+Thiss
+Thisss
+Thisss
+Thissss
+This is a line
+This is a one more line
+This	is	tab	line
+
+============================================================
+
+\+ matches one or more means if sarch This\+ the Thi+s is present once or more time
+
+sed -n '/This\+/p' ex.txt
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf
+Thiss
+Thisss
+Thisss
+Thissss
+This is a line
+This is a one more line
+This	is	tab	line
+
+=============================================
+
+\? matches only zero or one time means if This\? then Thi+0s or one time Thi+1s
+
+sed -n '/This\?/p' ex.txt
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf
+Thi
+Thiss
+Thisss
+Thisss
+Thissss
+This is a line
+This is a one more line
+This	is	tab	line
+========================================================
+
+with space
+
+sed -n '/This\?\s/p' ex.txt
+This is a put asdf
+This is a pitasdf
+This is a pot asdf
+This \s is a pytasdf
+This is only pt
+This is a line
+This is a one more line
+This	is	tab	line
