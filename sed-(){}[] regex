@@ -1,0 +1,78 @@
+special characters [] {} ()
+[] matches any character in this
+
+sed -n '/p[you]t/p' ea.txt 
+This is a put asdf
+This is ^ a pot asdf
+This \s is a pytasdf
+Thisisapotasdf $
+put is there in this line
+This is a line pot
+
+[adminuser@centos awk]$ sed -n '/p[a-ch-im-qx-z]t/p' ea.txt 
+^ This is a pitasdf
+This is ^ a pot asdf
+This \s is a pytasdf
+Thisisapotasdf $
+This is a line pot
+
+
+{} matches required number of repetitions
+
+we want s 3 times or more
+
+[adminuser@centos awk]$ sed -n '/This\{3\}/p' ea.txt
+Thisss $ gffdf
+Thisss
+Thissss
+
+actual 3 times only then use \b 
+
+sed -n '/This\{3\}\b/p' ea.txt
+Thisss $ gffdf
+Thisss
+
+want 3 or 4 times exactly
+
+sed -n '/This\{3,4\}\b/p' ea.txt
+Thisss $ gffdf
+Thisss
+Thissss
+
+()  this will search for zero or more as word to whole
+
+this will print asdf in any line
+
+sed -n '/asdf/p' ea.txt
+This is a put asdf
+^ This is a pitasdf
+This is ^ a pot asdf
+This \s is a pytasdf
+Thisisapotasdf $
+asdfasdf
+asdfasdfasdfasdf
+
+but we want only asdf two time repeat then
+
+sed -n '/\(asdf\)\{2\}/p' ea.txt 
+asdfasdf
+asdfasdfasdfasdf
+
+asdef one time or more
+
+sed -n '/\(asdf\)\+/p' ea.txt 
+This is a put asdf
+^ This is a pitasdf
+This is ^ a pot asdf
+This \s is a pytasdf
+Thisisapotasdf $
+asdfasdf
+asdfasdfasdfasdf
+
+asdf as word only not having other characters
+
+sed -n '/\b\(asdf\)\+/p' ea.txt
+This is a put asdf
+This is ^ a pot asdf
+asdfasdf
+asdfasdfasdfasdf
