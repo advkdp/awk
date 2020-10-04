@@ -1,0 +1,48 @@
+/ ^ $ special characters  /
+bash: /: Is a directory
+[adminuser@centos awk]$ 
+[adminuser@centos awk]$ sed -n '/put/p' ea.txt 
+This is a put asdf
+put is there in this line
+[adminuser@centos awk]$ / we want the line where put is at start of line then /^C
+[adminuser@centos awk]$ sed -n '/^put/p' ea.txt 
+put is there in this line
+[adminuser@centos awk]$ / we want pot word at end of line 
+
+sed -n '/pot$/p' ea.txt 
+This is a line pot
+
+print lines which are empty^C
+[adminuser@centos awk]$ sed -n '/^$/p' ea.txt
+
+To delete empty lines
+
+sed  '/^$/d' ea.txt 
+This is a put asdf
+^ This is a pitasdf
+This is ^ a pot asdf
+This \s is a pytasdf
+This is only pt
+Thisisapotasdf $
+put is there in this line
+asdfasdf
+Thi
+Thiss
+Thisss $ gffdf
+Thisss
+Thissss
+This is a line pot
+This is a one more line
+. * \+ \?
+asdfasdfasdfasdf
+This	is	tab	line
+
+=======================================================
+
+To search only line have a ^ and $ symbol
+sed -n '/\^/p' ea.txt 
+^ This is a pitasdf
+This is ^ a pot asdf
+[adminuser@centos awk]$ sed -n '/\$/p' ea.txt 
+Thisisapotasdf $
+Thisss $ gffdf
